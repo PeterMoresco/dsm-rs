@@ -9,6 +9,7 @@ use std::vec::Vec;
 // use ndarray::{ Array3, Array, Array2, arr2, array };
 // use ndarray:: prelude::*;
 use ndarray::*;
+use ndarray_linalg::*;
 
 
 fn stiffness_matrix(nos: &Vec<[f64; 2]>, barras: &Vec<[i32; 2]>, areas: &Vec<f64>, mom_e: f64) -> (Array2<f64>, Array3<f64>) {
@@ -105,4 +106,7 @@ fn main() {
     // let drest = [0,1,2,3];
     let a = stiffness_matrix(&nos, &barras, &areas, mom);
     // println!("This is the mrg\n{:?}", a.0)
+    let b: Array2<f64> = random((3, 3));
+    let c: Array1<f64> = random(3);
+    let _x = b.solve(&c);
 }
